@@ -24,16 +24,57 @@
                 <a href="tel:5551985322028">{{ client.phonePoa2 }}</a>
             </p>
             <p class="footer-rm-office">
+                <strong class="footer-rm-office-heading">Filial – Santa Maria RS</strong><br>
+                <a href="tel:5130839639">(51) 3083-9639</a>
+            </p>
+            <p class="footer-rm-office">
                 <strong class="footer-rm-office-heading">Filial – Rio de Janeiro RJ</strong><br>
                 <a href="tel:2120420051">{{ client.phoneRj }}</a>
             </p>
         </div>
         <div class="footer-rm-col footer-rm-map">
-            <div class="footer-rm-map-embed">
-                <iframe src="{{ client.address.embedUrl }}" width="280" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa – {{ client.addressShort }}"></iframe>
-            </div>
-            <p class="footer-rm-address footer-rm-heading-accent">Porto Alegre – {{ client.addressShort }}</p>
-            <a class="footer-rm-map-link" href="{{ client.address.mapLink }}" target="_blank" rel="noopener" aria-label="Abrir no Google Maps">Abrir no Google Maps</a>
+            <p class="footer-rm-address footer-rm-heading-accent">
+                Porto Alegre – {{ client.addressShort }}
+            </p>
+            <a
+                class="footer-rm-map-link"
+                href="{{ client.address.mapLink }}"
+                target="_blank"
+                rel="noopener"
+                aria-label="Abrir Porto Alegre no Google Maps"
+            >
+                Abrir no Google Maps
+            </a>
+
+            <div class="footer-rm-map-separator"></div>
+
+            <p class="footer-rm-address footer-rm-heading-accent">
+                Santa Maria – Centro Profissional Presidente Vargas<br>
+                Avenida Presidente Vargas, 2135, sala 205 – Bairro Nossa Senhora de Fátima
+            </p>
+            <a
+                class="footer-rm-map-link"
+                href="https://maps.google.com/?q=Avenida+Presidente+Vargas,+2135,+Santa+Maria,+RS"
+                target="_blank"
+                rel="noopener"
+                aria-label="Abrir Santa Maria no Google Maps"
+            >
+                Abrir no Google Maps
+            </a>
+
+            <p class="footer-rm-address footer-rm-heading-accent">
+                Rio de Janeiro – Avenida Rio Branco, 156, Edifício Central<br>
+                Sala 824, 8º andar – Centro, Rio de Janeiro/RJ, CEP 20040-905
+            </p>
+            <a
+                class="footer-rm-map-link"
+                href="https://maps.google.com/?q=Avenida+Rio+Branco,+156,+Centro,+Rio+de+Janeiro,+RJ+20040-905"
+                target="_blank"
+                rel="noopener"
+                aria-label="Abrir Rio de Janeiro no Google Maps"
+            >
+                Abrir no Google Maps
+            </a>
         </div>
     </div>
     <div class="footer-rm-copy">

@@ -32,8 +32,14 @@
 
 		/* Typography scale (spec: H1 ~40px, H2 ~32px, H3 ~20-22px, body ~16-18px) */
 		--topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
-		--headerFontSize: clamp(1.25rem, 2.5vw, 2.5rem);
 		--bodyFontSize: clamp(1rem, 1.125rem, 1.125rem);
+		/* Named heading scale */
+		--h1FontSize: clamp(2.5rem, 4vw, 2.75rem);
+		--h2FontSize: clamp(2rem, 3vw, 2.25rem);
+		--h3FontSize: clamp(1.25rem, 2.2vw, 1.5rem);
+		/* Supporting sizes */
+		--smallTextSize: clamp(0.875rem, 1.5vw, 0.95rem);
+		--bodyLargeSize: clamp(1.0625rem, 1.6vw, 1.2rem);
 		/* Section padding 80-120px, max content ~1200px */
 		--sectionPadding: clamp(5rem, 8vw, 7.5rem) 1rem;
 		--contentMaxWidth: 75rem;
@@ -80,7 +86,7 @@
 	}
 
 	.cs-title {
-		font-size: var(--headerFontSize);
+		font-size: var(--h2FontSize);
 		font-weight: 900;
 		line-height: 1.2em;
 		text-align: inherit;
@@ -213,6 +219,22 @@
 		font-weight: 700;
 	}
 
+	.text-center {
+		text-align: center;
+	}
+
+	.text-left {
+		text-align: left;
+	}
+
+	.text-small {
+		font-size: var(--smallTextSize);
+	}
+
+	.text-accent {
+		color: var(--primary);
+	}
+
 	.cs-hide-on-mobile {
 		display: none !important;
 	}
@@ -262,6 +284,18 @@
 		font-family: var(--headerFont);
 		line-height: 1.2em;
 		color: var(--headerColor);
+	}
+
+	h1 {
+		font-size: var(--h1FontSize);
+	}
+
+	h2 {
+		font-size: var(--h2FontSize);
+	}
+
+	h3 {
+		font-size: var(--h3FontSize);
 	}
 
 	p,
@@ -1786,12 +1820,21 @@
 	}
 	.footer-rm-map-link {
 		display: inline-block;
+		margin-bottom: 0.5rem;
 		text-decoration: none;
 		color: var(--primary);
 		font-size: 0.9375rem;
 		&:hover {
 			text-decoration: underline;
 		}
+	}
+	.footer-rm-map-separator {
+		width: 100%;
+		max-width: 400px;
+		height: 1px;
+		background: var(--primary);
+		opacity: 0.6;
+		margin: 1rem 0;
 	}
 	.footer-rm-copy {
 		text-align: center;

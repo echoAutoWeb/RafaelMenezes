@@ -36,10 +36,42 @@
                 <h3 class="section-estrutura-subtitle">Atendimento Presencial</h3>
                 <p class="cs-text">Porto Alegre</p>
                 <p class="cs-text">Rio de Janeiro</p>
+                <p class="cs-text">Santa Maria</p>
                 <h3 class="section-estrutura-subtitle">Atendimento Online</h3>
                 <p class="cs-text">Todo o Brasil</p>
-                <a href="/#cs-footer-275" class="cs-button-solid">Fale conosco</a>
+                <a href="/#cs-footer-275" class="cs-button-solid" data-open-contact-modal>Fale conosco</a>
             </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal pequeno para contatos rápidos -->
+<section class="contact-modal-overlay" id="contact-modal" hidden>
+    <div class="contact-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+        <button
+            type="button"
+            class="contact-modal-close"
+            data-close-contact-modal
+            aria-label="Fechar opções de contato"
+        >
+            ×
+        </button>
+        <h2 id="contact-modal-title" class="contact-modal-title">Fale conosco</h2>
+        <div class="contact-modal-links">
+            <a
+                href="https://wa.me/{{ client.whatsapp }}"
+                target="_blank"
+                rel="noopener"
+                class="contact-modal-link"
+            >
+                WhatsApp
+            </a>
+            <a href="tel:{{ client.phoneForTel }}" class="contact-modal-link">
+                Ligar
+            </a>
+            <a href="mailto:{% raw %}{{ client.email }}{% endraw %}" class="contact-modal-link">
+                E-mail
+            </a>
         </div>
     </div>
 </section>

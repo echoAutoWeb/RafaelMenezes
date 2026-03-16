@@ -254,3 +254,105 @@
 	init.inertState();
 	init.eventListeners();
 })();
+
+// Modal simples para abrir o formulário externo em overlay
+(() => {
+	const FORM_URL =
+		"https://proform-1c352.web.app/cadastro?partnerId=BCuNnZTCXsVYZK6DdIpL4Mt6bee2";
+
+	const overlay = document.getElementById("form-modal");
+	if (!overlay) return;
+
+	const dialog = overlay.querySelector(".form-modal-dialog");
+	const closeButtons = overlay.querySelectorAll("[data-close-form-modal]");
+
+	// Garante que sempre começamos fechado, mesmo se o HTML vier sem hidden
+	overlay.hidden = true;
+
+	const openModal = () => {
+		overlay.hidden = false;
+		document.body.classList.add("form-modal-open");
+	};
+
+	const closeModal = () => {
+		overlay.hidden = true;
+		document.body.classList.remove("form-modal-open");
+	};
+
+	document.addEventListener("click", (event) => {
+		const trigger = event.target.closest("[data-open-form-modal]");
+		if (trigger) {
+			event.preventDefault();
+			openModal();
+		}
+	});
+
+	overlay.addEventListener("click", (event) => {
+		if (!dialog) return;
+		if (!dialog.contains(event.target)) {
+			closeModal();
+		}
+	});
+
+	closeButtons.forEach((btn) => {
+		btn.addEventListener("click", (event) => {
+			event.preventDefault();
+			event.stopPropagation();
+			closeModal();
+		});
+	});
+
+	document.addEventListener("keydown", (event) => {
+		if (event.key === "Escape" && !overlay.hidden) {
+			closeModal();
+		}
+	});
+})();
+
+// Modal pequeno para Fale Conosco
+(() => {
+	const overlay = document.getElementById("contact-modal");
+	if (!overlay) return;
+
+	const dialog = overlay.querySelector(".contact-modal-dialog");
+	const closeButtons = overlay.querySelectorAll("[data-close-contact-modal]");
+
+	overlay.hidden = true;
+
+	const openModal = () => {
+		overlay.hidden = false;
+	};
+
+	const closeModal = () => {
+		overlay.hidden = true;
+	};
+
+	document.addEventListener("click", (event) => {
+		const trigger = event.target.closest("[data-open-contact-modal]");
+		if (trigger) {
+			event.preventDefault();
+			openModal();
+		}
+	});
+
+	overlay.addEventListener("click", (event) => {
+		if (!dialog) return;
+		if (!dialog.contains(event.target)) {
+			closeModal();
+		}
+	});
+
+	closeButtons.forEach((btn) => {
+		btn.addEventListener("click", (event) => {
+			event.preventDefault();
+			event.stopPropagation();
+			closeModal();
+		});
+	});
+
+	document.addEventListener("keydown", (event) => {
+		if (event.key === "Escape" && !overlay.hidden) {
+			closeModal();
+		}
+	});
+})();

@@ -8,6 +8,41 @@
     background: linear-gradient(180deg, var(--sectionGradientStart) 0%, var(--sectionGradientEnd) 100%);
 }
 
+/* Ajustes mobile gerais para reduzir respiro e melhorar leitura */
+@media (max-width: 48rem) {
+    .section-rm {
+        padding: 3.5rem 1.25rem;
+    }
+
+    .section-quem-somos .cs-title,
+    .section-mvv .section-mvv-title,
+    .section-areas-title,
+    .section-estrutura-title {
+        font-size: calc(var(--h2FontSize) * 0.9);
+    }
+
+    .section-areas .section-areas-item {
+        gap: 0.35rem;
+        padding: 1.1rem 0;
+    }
+
+    .section-areas-item-title {
+        font-size: 0.9rem;
+    }
+
+    .section-areas-item-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .section-estrutura .section-estrutura-images {
+        grid-template-columns: 1fr;
+    }
+
+    .section-estrutura .section-estrutura-figure img {
+        height: 200px;
+    }
+}
+
 /* Quem Somos – fundo preto sólido, H2 32-40px, texto cinza claro */
 .section-quem-somos {
     background: #000000;
@@ -35,15 +70,15 @@
     }
     .cs-title {
         color: #fff;
-        font-size: clamp(2rem, 2.5vw, 1.5rem);
+        font-size: var(--h2FontSize);
         font-weight: 700;
         margin-bottom: 1rem;
     }
     .cs-text {
         color: var(--bodyTextColor);
         margin: 0;
-        font-size: 1.3rem;
-        line-height: 1.1;
+        font-size: var(--bodyLargeSize);
+        line-height: 1.4;
         font-weight: 600;
     }
 }
@@ -87,7 +122,7 @@
     }
     .section-mvv-title {
         font-family: var(--headerFont);
-        font-size: 1.25rem;
+        font-size: var(--h3FontSize);
         font-weight: 600;
         color: #f7c897;
         margin: 0 0 0.75rem 0;
@@ -98,7 +133,7 @@
         padding-left: 1.25rem;
         color: var(--bodyTextColor);
         line-height: 1.4;
-        font-size: 1rem;
+        font-size: var(--bodyFontSize);
         text-align: center;
         list-style: none;
         padding-left: 0;
@@ -109,7 +144,7 @@
     .cs-text {
         color: var(--bodyTextColor);
         margin: 0;
-        font-size: 1rem;
+        font-size: var(--bodyFontSize);
         line-height: 1.4;
         text-align: center;
     }
@@ -140,7 +175,7 @@
         text-align: center;
         margin: 0 auto 2rem auto;
         max-width: 56rem;
-        font-size: clamp(2rem, 2.5vw, 2.5rem);
+        font-size: var(--h2FontSize);
         font-weight: 700;
     }
     .section-areas-list {
@@ -161,24 +196,24 @@
         }
     }
     .section-areas-item-title-wrap {
-        text-align: center;
+        text-align: left;
     }
     .section-areas-item-title {
         font-family: var(--headerFont);
-        font-size: 1.1rem;
+        font-size: 0.95rem; /* "Direito" – smaller than the specialty word */
         font-weight: 700;
         color: #fff;
         margin: 0;
-        text-align: center;
+        text-align: left;
     }
     .section-areas-item-subtitle {
         display: block;
-        font-size: 1.5rem;
+        font-size: 1.35rem; /* Civil, Trabalhista, etc. – larger than "Direito" */
     }
     .section-areas-item .cs-text {
         color: var(--bodyTextColor);
         margin: 0;
-        font-size: 0.95rem;
+        font-size: var(--bodyFontSize);
         line-height: 1.5;
         text-align: left;
     }
@@ -204,7 +239,7 @@
         gap: 1rem;
     }
     .section-cta-rm-text {
-        font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+        font-size: var(--bodyLargeSize);
         color: #fff;
         margin: 0;
         font-weight: 600;
@@ -229,7 +264,7 @@
         margin: 0 auto 2rem auto;
         max-width: 75rem;
         text-align: center;
-        font-size: clamp(2rem, 2.5vw, 2.5rem);
+        font-size: var(--h2FontSize);
         font-weight: 700;
     }
     .section-estrutura-inner {
@@ -275,7 +310,7 @@
             padding: 0.75rem;
             background: var(--accent);
             color: #fff;
-            font-size: 0.875rem;
+            font-size: var(--smallTextSize);
             text-align: center;
         }
     }
@@ -283,7 +318,7 @@
         text-align: center;
         .section-estrutura-subtitle {
             font-family: var(--headerFont);
-            font-size: 1rem;
+            font-size: var(--h3FontSize);
             font-weight: 700;
             color: #fff;
             margin: 1rem 0 0.5rem 0;
@@ -293,7 +328,7 @@
         }
         .cs-text {
             color: var(--primary);
-            font-size: 1.125rem;
+            font-size: var(--bodyLargeSize);
             font-weight: 600;
             margin: 0 0 0.25rem 0;
         }
@@ -310,6 +345,144 @@
             }
         }
     }
+}
+
+/* Modal para formulário externo (Proforms) */
+.form-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9998;
+    padding: 1rem;
+}
+
+/* Respeita o atributo [hidden] para realmente ocultar o modal */
+.form-modal-overlay[hidden] {
+    display: none !important;
+}
+
+body.form-modal-open {
+    overflow: hidden;
+}
+
+.form-modal-dialog {
+    width: 100%;
+    max-width: 900px;
+    max-height: 90vh;
+    background: #111111;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+}
+
+.form-modal-title {
+    margin: 0;
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background: #000000;
+    border-bottom: 1px solid var(--primary);
+}
+
+.form-modal-close {
+    position: absolute;
+    top: 0.85rem;
+    right: 1.1rem;
+    border: none;
+    background: transparent;
+    color: #ffffff;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.form-modal-iframe {
+    flex: 1;
+    border: none;
+    width: 100%;
+    min-height: 60vh;
+    background: #ffffff;
+}
+
+@media (max-width: 48rem) {
+    .form-modal-dialog {
+        max-width: 100%;
+        max-height: 95vh;
+    }
+}
+
+/* Modal pequeno para Fale Conosco */
+.contact-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9998;
+    padding: 1rem;
+}
+
+.contact-modal-overlay[hidden] {
+    display: none !important;
+}
+
+.contact-modal-dialog {
+    position: relative;
+    width: 100%;
+    max-width: 360px;
+    background: #111111;
+    border-radius: 12px;
+    padding: 1.5rem 1.25rem 1.25rem;
+    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.7);
+}
+
+.contact-modal-title {
+    margin: 0 0 0.75rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-align: center;
+}
+
+.contact-modal-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.9rem;
+    border: none;
+    background: transparent;
+    color: #ffffff;
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.contact-modal-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.contact-modal-link {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 0.55rem 0.75rem;
+    border-radius: 999px;
+    background: var(--primary);
+    color: #000;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.contact-modal-link:hover {
+    background: var(--primaryLight);
 }
 @media (min-width: 64rem) {
     .section-estrutura .section-estrutura-inner {
