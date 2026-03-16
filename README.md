@@ -122,25 +122,6 @@ Run `npm run remove-decap` to remove Decap CMS and optionally all blog content.
 
 Run `npm run remove-demo` to strip the template to its bare minimum.
 
-### Create New Page
-
-Run `npm run create-page -- "Page Name"` to scaffold a new page.
-
-Pass a comma-separated list to create multiple pages at once:
-
-```node
-npm run create-page -- "About, Services, Contact"
-```
-
-For each name provided, the script will:
-
-- Create `src/content/pages/{slug}.html` pre-filled with `_template.txt`
-- Create `src/assets/scss/{slug}.scss` ready for your page-specific styles
-- Set the page title to `Page Name | Client | City, State` automatically using data from `_data/client.js`
-- Set the permalink to `/{slug}/`
-
-If a page with the same slug already exists, it will be skipped with a message rather than overwritten.
-
 <a name="explanation-of-file-structure"></a>
 
 ## Explanation of File Structure

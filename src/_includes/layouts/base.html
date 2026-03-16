@@ -16,8 +16,8 @@
         <meta property="og:description" content="{{ description }}"/>
         <meta property="og:type" content="website"/>
         <meta property="og:url" content="{{ client.domain }}{{ page.url }}"/>
-        <meta property="og:image" content="{{ image or "/assets/images/logo-small.png" }}"/>
-        <meta property="og:image:secure_url" content="{{ image or "/assets/images/logo-small.png" }}"/>
+        <meta property="og:image" content="{{ image or client.domain + '/assets/images/logo.svg' }}"/>
+        <meta property="og:image:secure_url" content="{{ image or client.domain + '/assets/images/logo.svg' }}"/>
 
         <!--Favicons-->
         <!-- https://realfavicongenerator.net/ -->
@@ -28,10 +28,12 @@
         <meta name="apple-mobile-web-app-title" content="Starter Kit"/>
         <link rel="manifest" href="/assets/favicons/site.webmanifest"/>
 
+        <!-- Fonts: Montserrat (geometric modern sans, spec) -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
         <!-- Preloads -->
-        <link rel="preload" as="image" href="/assets/svgs/logo-black.svg">
-        <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/roboto-v29-latin-regular.woff2" crossorigin>
-        <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/roboto-v29-latin-700.woff2" crossorigin>
+        <link rel="preload" as="image" href="/assets/images/logo.svg">
 
         <!-- Sitewide Stylesheets and Scripts -->
         <link rel="stylesheet" href="/assets/css/root.css">
@@ -42,7 +44,7 @@
 
         <title>{{ title }}</title>
     </head>
-    <body>
+    <body class="dark-mode">
         <!--Screen reader skip main nav-->
         <a class="skip" aria-label="skip to main content" href="#main">Click To Skip To Main Content</a>
 
@@ -52,5 +54,9 @@
         </main>
         {% include "sections/footer.html" %}
 
+        <!-- Botão WhatsApp fixo – canto inferior direito (spec) -->
+        <a class="whatsapp-floating" href="https://wa.me/{{ client.whatsapp }}" target="_blank" rel="noopener" aria-label="Fale conosco no WhatsApp">
+            <img src="/assets/svgs/whatsapp.svg" alt="" width="32" height="32" aria-hidden="true">
+        </a>
     </body>
 </html>

@@ -198,6 +198,11 @@
 		inertState() {
 			if (!elements.menuWrapper) return;
 
+			// Header RM: no mobile mostra grade 2x2, menu sempre visível e clicável
+			if (elements.navigation?.classList.contains("cs-nav-rm")) {
+				elements.menuWrapper.inert = false;
+				return;
+			}
 			// On mobile, menu starts closed, so set inert=true
 			// On desktop, menu is always visible, so set inert=false
 			elements.menuWrapper.inert = isMobile();

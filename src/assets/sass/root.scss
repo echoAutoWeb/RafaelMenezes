@@ -1,43 +1,50 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// CODESTITCH GLOBAL STYLES
-// Core stylesheet containing CSS variables, dark mode styles, base element
-// styling, typography rules, utility classes, component styles, navigation,
-// footer, and other repeated section styles for the entire site
+// GLOBAL STYLES
+// Core stylesheet: CSS variables, dark mode, base elements, typography,
+// components, navigation, footer and repeated section styles
 // ─────────────────────────────────────────────────────────────────────────────
 
 /*-- -------------------------- -->
 <---        Core Styles         -->
 <--- -------------------------- -*/
 
-/* CodeStitch Core Styles + Reset */
+/* Core styles + reset */
 @media only screen and (min-width: 0px) {
 	/* All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */
 	:root {
-		--primary: #ff6a3e;
-		--primaryLight: #ffba43;
-		--secondary: #ffba43;
-		--secondaryLight: #ffba43;
-		--headerColor: #1a1a1a;
-		--bodyTextColor: #4e4b66;
-		--bodyTextColorWhite: #fafbfc;
+		/* Premium law firm: dark + warm beige/gold (spec) */
+		--primary: #d6a36a;
+		--primaryLight: #e4b882;
+		--secondary: #d6a36a;
+		--secondaryLight: #e4b882;
+		--headerColor: #ffffff;
+		--bodyTextColor: #cfcfcf;
+		--bodyTextColorWhite: #ffffff;
 
-		/* Dark Mode Styles */
-		--dark: #082032;
-		--medium: #2c394b;
-		--accent: #334756;
+		/* Backgrounds: charcoal gradient sections, black dividers */
+		--dark: #000000;
+		--medium: #1c1c1c;
+		--accent: #2a2a2a;
+		--sectionDark: #1c1c1c;
+		--sectionGradientStart: #1c1c1c;
+		--sectionGradientEnd: #2a2a2a;
+		--dividerBg: #000000;
 
-		/* 13px - 16px */
+		/* Typography scale (spec: H1 ~40px, H2 ~32px, H3 ~20-22px, body ~16-18px) */
 		--topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
-		/* 31px - 49px */
-		--headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);
-		--bodyFontSize: 1rem;
-		/* 60px - 100px top and bottom */
-		--sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
+		--headerFontSize: clamp(1.25rem, 2.5vw, 2.5rem);
+		--bodyFontSize: clamp(1rem, 1.125rem, 1.125rem);
+		/* Section padding 80-120px, max content ~1200px */
+		--sectionPadding: clamp(5rem, 8vw, 7.5rem) 1rem;
+		--contentMaxWidth: 75rem;
 
-		--headerFont: "Roboto", Arial, sans-serif;
-		--bodyFont: "Roboto", Arial, sans-serif;
+		--headerFont: "Montserrat", "Roboto", Arial, sans-serif;
+		--bodyFont: "Montserrat", "Roboto", Arial, sans-serif;
 	}
 
+	html {
+		scroll-padding-top: 1rem;
+	}
 	html,
 	body {
 		margin: 0;
@@ -45,7 +52,9 @@
 		overflow-x: hidden;
 		font-family: var(--bodyFont);
 		font-size: 100%;
+		line-height: 1.7;
 		transition: background-color 0.3s;
+		background-color: var(--dark);
 		color: var(--bodyTextColor);
 	}
 
@@ -83,12 +92,31 @@
 
 	.cs-text {
 		font-size: var(--bodyFontSize);
-		line-height: 1.5em;
+		line-height: 1.7;
 		text-align: inherit;
 		width: 100%;
-		max-width: 40.625rem;
+		/* max-width: 40.625rem; */
 		margin: 0;
 		color: var(--bodyTextColor);
+	}
+
+	/* Logo Rafael Menezes – imagem real do site (fundo transparente) */
+	.logo-rm {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: transparent;
+	}
+	a .logo-rm {
+		background: transparent;
+	}
+	.logo-rm-img {
+		display: block;
+		max-width: 100%;
+		height: auto;
+		object-fit: contain;
+		background: transparent;
+		filter: invert(1);
 	}
 }
 
@@ -103,50 +131,32 @@
 		opacity: 0;
 	}
 
-	// Buttons - can be replaced using CodeStitch's "Button" Stitches. Make sure to clear the default .cs-button-solid/outline styles from any new stitches you place.
+	// Buttons – spec: 8px radius, beige fill, black text
 	.cs-button-solid {
 		z-index: 1;
 		position: relative;
 		display: inline-block;
 		background-color: var(--primary);
 		width: auto;
-		padding: calc(16 / 16 * 1rem) calc(32 / 16 * 1rem);
+		padding: 0.75rem 1.5rem;
 		text-decoration: none;
 		text-transform: uppercase;
-		font-size: calc(16 / 16 * 1rem);
-		line-height: calc(16 / 16 * 1em);
-		font-weight: bold;
-		border-radius: calc(4 / 16 * 1rem);
+		font-size: 0.9375rem;
+		font-weight: 600;
+		line-height: 1.2;
+		border-radius: 8px;
 		overflow: hidden;
-
-		// Transition Properties
-		color: var(--bodyTextColorWhite);
-		transition: color 0.3s;
-		transition-delay: 0.1s;
+		color: #000;
+		transition: background-color 0.25s, color 0.25s;
 		text-align: center;
 
 		&:hover {
-			color: #fff;
-
-			&:before {
-				width: 100%;
-			}
+			background-color: var(--primaryLight);
+			color: #000;
 		}
 
 		&:before {
-			z-index: -1;
-			position: absolute;
-			top: 0;
-			left: 0;
-			content: "";
-			opacity: 1;
-			display: block;
-			background-color: #000;
-			height: 100%;
-
-			//Transition properties
-			width: 0;
-			transition: width 0.3s;
+			display: none;
 		}
 	}
 
@@ -1090,6 +1100,156 @@
 	}
 }
 
+/* Header Rafael Menezes – rola com a página, transparente sobre o hero, logo centro, nav abaixo, hover beige */
+@media only screen and (min-width: 0px) {
+	#cs-navigation.cs-nav-rm {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 10000;
+		background-color: transparent !important;
+		background-image: none !important;
+		box-shadow: none;
+		border: none;
+		.cs-nav-rm-container {
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			gap: 0.75rem;
+		}
+		.cs-nav-rm-brand,
+		.cs-nav-rm-top {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.cs-nav-rm-logo {
+			display: inline-flex;
+			flex-direction: column;
+			align-items: center;
+			text-decoration: none;
+		}
+		.cs-nav-rm-logo .logo-rm {
+			display: inline-flex;
+			align-items: center;
+			pointer-events: none;
+		}
+		.cs-nav-rm-logo .logo-rm-img {
+			max-width: clamp(8rem, 18vw, 11rem);
+			height: auto;
+		}
+		.cs-nav-rm-nav {
+			display: flex;
+			justify-content: center;
+		}
+		.cs-nav-rm-ul.cs-ul {
+			justify-content: center;
+			flex-wrap: wrap;
+			gap: 0.5rem 1.25rem;
+		}
+		.cs-nav-rm-link.cs-li-link {
+			color: #fff;
+			text-decoration: none;
+			transition: color 0.2s;
+			&:hover {
+				color: var(--primary);
+			}
+			&::before {
+				display: none !important;
+			}
+		}
+	}
+}
+@media only screen and (max-width: 1023.5px) {
+	#cs-navigation.cs-nav-rm {
+		padding: 0.75rem 1rem;
+		.cs-nav-rm-container {
+			align-items: center;
+		}
+		.cs-nav-rm-brand {
+			position: static;
+		}
+		/* Sem hamburger: esconder o botão e mostrar itens em grade 2x2 */
+		.cs-toggle {
+			display: none !important;
+		}
+		.cs-ul-wrapper {
+			position: static;
+			height: auto;
+			opacity: 1;
+			transform: none;
+			overflow: visible;
+			background: transparent;
+			box-shadow: none;
+			width: 100%;
+		}
+		.cs-nav-rm-ul.cs-ul {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 0.5rem 1rem;
+			justify-items: center;
+			max-width: 20rem;
+			margin: 0 auto;
+		}
+		.cs-nav-rm-ul.cs-ul .cs-li {
+			width: 100%;
+			text-align: center;
+		}
+		.cs-line {
+			background-color: #fff;
+		}
+		.cs-nav-rm-link.cs-li-link {
+			color: #fff;
+		}
+	}
+}
+@media only screen and (min-width: 64rem) {
+	#cs-navigation.cs-nav-rm {
+		padding: 1rem 1.5rem;
+		.cs-nav-rm-container {
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			max-width: 75rem;
+			margin: 0 auto;
+			gap: 0.75rem;
+		}
+		.cs-nav-rm-nav {
+			width: auto;
+			display: flex;
+			justify-content: center;
+		}
+		.cs-ul-wrapper {
+			position: static;
+			height: auto;
+			opacity: 1;
+			transform: none;
+			background: transparent;
+			box-shadow: none;
+		}
+		.cs-nav-rm-ul.cs-ul {
+			justify-content: center;
+			gap: 1.5rem 2rem;
+		}
+		.cs-nav-rm-link.cs-li-link {
+			font-size: 1.41rem;
+			letter-spacing: 0.02em;
+			font-weight: 600;
+			color: #fff;
+		}
+	}
+}
+
+@media only screen and (min-width: 1024px) {
+	#cs-navigation .cs-li {
+		list-style: none;
+		padding: 0;
+		flex: none;
+	}
+}
+
 /*-- -------------------------- -->
 <---          Banner            -->
 <--- -------------------------- -*/
@@ -1392,13 +1552,13 @@
 
 			&:after {
 				content: "";
-				width: calc(32 / 16 * 1rem);
-				height: calc(4 / 16 * 1rem);
-				margin: calc(16 / 16 * 1rem) auto calc(24 / 16 * 1rem) 0;
-				background: var(--primary);
-				opacity: 1;
+				width: 0;
+				height: 0;
+				margin: 0;
+				background: transparent;
+				opacity: 0;
 				position: relative;
-				display: block;
+				display: none;
 			}
 		}
 
@@ -1517,3 +1677,172 @@
 		}
 	}
 }
+
+/* Footer Rafael Menezes – fundo preto (spec) */
+#cs-footer-275.footer-rm {
+	background-color: var(--dark);
+	padding: clamp(2.5rem, 5vw, 4rem) 1rem 1.5rem;
+	.footer-rm-container {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2rem;
+		max-width: calc(1280 / 16 * 1rem);
+		margin: 0 auto;
+	}
+	.footer-rm-col {
+		.cs-header {
+			font-size: 1rem;
+			font-weight: 700;
+			color: #fff;
+			display: block;
+			margin-bottom: 0.75rem;
+		}
+	}
+	.footer-rm-logo {
+		text-align: center;
+	}
+	.footer-rm-logo-link {
+		display: inline-block;
+		text-decoration: none;
+		margin-bottom: 1rem;
+	}
+	.footer-rm-logo .logo-rm-img {
+		max-width: 11.5rem;
+		height: auto;
+	}
+	.footer-rm-social {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+	}
+	.footer-rm-social-link {
+		display: inline-flex;
+		color: #fff;
+	}
+	.footer-rm-social-link img {
+		width: 2rem;
+		height: 2rem;
+	}
+	.footer-rm-social-handle {
+		font-size: 1rem;
+		font-weight: 700;
+		color: #ffffff;
+	}
+	.footer-rm-link,
+	.footer-rm-office a {
+		font-size: 0.9375rem;
+		color: var(--bodyTextColor);
+		text-decoration: none;
+		display: block;
+		margin-bottom: 0.5rem;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+	.footer-rm-office {
+		font-size: 0.9375rem;
+		color: var(--bodyTextColor);
+		margin: 0 0 1rem 0;
+		line-height: 1.5;
+	}
+	.footer-rm-heading-accent {
+		color: #fcca97;
+	}
+	.footer-rm-contact .footer-rm-heading-accent {
+		color: #fcca97;
+	}
+	.footer-rm-office-heading {
+		color: #fcca97;
+	}
+	.footer-rm-map .cs-header {
+		margin-bottom: 0.5rem;
+	}
+	.footer-rm-address {
+		display: block;
+		font-size: 0.9375rem;
+		color: var(--bodyTextColor);
+		margin: 0 0 0.75rem 0;
+		line-height: 1.5;
+	}
+	.footer-rm-map-embed {
+		position: relative;
+		width: 100%;
+		max-width: 400px;
+		height: 0;
+		padding-bottom: 56.25%;
+		overflow: hidden;
+		border-radius: 0.25rem;
+		margin-bottom: 0.75rem;
+		iframe {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			border: 0;
+		}
+	}
+	.footer-rm-map-link {
+		display: inline-block;
+		text-decoration: none;
+		color: var(--primary);
+		font-size: 0.9375rem;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+	.footer-rm-copy {
+		text-align: center;
+		margin-top: 2rem;
+		padding-top: 1.5rem;
+		border-top: 1px solid rgba(255, 255, 255, 0.08);
+		background: rgba(0, 0, 0, 0.3);
+		p {
+			font-size: 0.8125rem;
+			color: var(--bodyTextColor);
+			opacity: 0.9;
+			margin: 0;
+		}
+	}
+}
+@media (min-width: 48rem) {
+	#cs-footer-275.footer-rm .footer-rm-container {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+@media (min-width: 64rem) {
+	#cs-footer-275.footer-rm .footer-rm-container {
+		grid-template-columns: 1fr 1fr 1fr;
+		align-items: flex-start;
+		gap: 2.5rem;
+	}
+}
+
+/* Botão WhatsApp fixo – canto inferior direito (spec) */
+.whatsapp-floating {
+	position: fixed;
+	bottom: 1.25rem;
+	right: 1.25rem;
+	z-index: 9999;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 3.5rem;
+	height: 3.5rem;
+	background-color: #25d366;
+	border-radius: 50%;
+	color: #fff;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+	transition: transform 0.2s, box-shadow 0.2s;
+	&:hover {
+		transform: scale(1.05);
+		box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+	}
+	img {
+		width: 2rem;
+		height: 2rem;
+	}
+}
+
