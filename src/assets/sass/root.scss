@@ -1746,10 +1746,11 @@
 	}
 	.footer-rm-social {
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
 		align-items: center;
 		justify-content: center;
 		gap: 0.5rem;
+		flex-wrap: wrap;
 	}
 	.footer-rm-social-link {
 		display: inline-flex;
@@ -1759,10 +1760,18 @@
 		width: 2rem;
 		height: 2rem;
 	}
+
+	/* (mantido apenas se algum lugar usar a classe) */
+	.footer-rm-social-icon-linkedin {
+		filter: none;
+	}
 	.footer-rm-social-handle {
 		font-size: 1rem;
 		font-weight: 700;
 		color: #ffffff;
+		flex-basis: 100%;
+		margin-top: 0.25rem;
+		text-align: center;
 	}
 	.footer-rm-link,
 	.footer-rm-office a {

@@ -356,3 +356,30 @@
 		}
 	});
 })();
+
+// Accordion mobile para Áreas de Atuação
+(() => {
+	const items = document.querySelectorAll(".section-areas .section-areas-item");
+	if (!items.length) return;
+
+	const isMobile = () => window.matchMedia("(max-width: 48rem)").matches;
+
+	items.forEach((item) => {
+		const titleWrap = item.querySelector(".section-areas-item-title-wrap") || item;
+
+		titleWrap.addEventListener("click", () => {
+			// Só aplica o accordion em mobile
+			if (!isMobile()) return;
+
+			const isOpen = item.classList.contains("is-open");
+
+			// Fecha todos os outros itens
+			items.forEach((it) => it.classList.remove("is-open"));
+
+			// Alterna o item atual
+			if (!isOpen) {
+				item.classList.add("is-open");
+			}
+		});
+	});
+})();

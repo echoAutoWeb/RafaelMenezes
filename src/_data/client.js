@@ -20,6 +20,8 @@ module.exports = {
     socials: {
         instagram: "https://www.instagram.com/rafaelmenezes.advocacia/",
         instagramHandle: "@rafaelmenezes.advocacia",
+        facebook: "https://www.facebook.com/p/Rafael-Menezes-Advocacia-100064244946139/",
+        linkedin: "https://br.linkedin.com/company/rafael-menezes-advocacia-e-consultoria",
     },
     whatsapp: "5551985322028",
     offices: [

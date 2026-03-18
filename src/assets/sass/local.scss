@@ -24,14 +24,26 @@
     .section-areas .section-areas-item {
         gap: 0.35rem;
         padding: 1.1rem 0;
+        cursor: pointer;
+    }
+
+    /* Accordion behavior: descriptions collapsed by default on mobile */
+    .section-areas-item .cs-text {
+        display: none;
+    }
+
+    .section-areas-item.is-open .cs-text {
+        display: block;
     }
 
     .section-areas-item-title {
-        font-size: 0.9rem;
+        font-size: 0.85rem; /* "Direito" menor */
+        line-height: 1.1;
     }
 
     .section-areas-item-subtitle {
-        font-size: 1.2rem;
+        font-size: 1.3rem; /* Civil/Trabalhista/etc maior */
+        line-height: 1.1;
     }
 
     .section-estrutura .section-estrutura-images {
@@ -197,6 +209,16 @@
     }
     .section-areas-item-title-wrap {
         text-align: left;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.35rem;
+    }
+    .section-areas-item-icon {
+        width: 3rem; /* 48px */
+        height: 3rem; /* 48px */
+        /* Aplica o dourado da identidade sobre PNGs pretos */
+        filter: invert(80%) sepia(54%) saturate(555%) hue-rotate(346deg) brightness(95%) contrast(93%);
     }
     .section-areas-item-title {
         font-family: var(--headerFont);
@@ -205,16 +227,22 @@
         color: #fff;
         margin: 0;
         text-align: left;
+        line-height: 1.1;
     }
     .section-areas-item-subtitle {
         display: block;
         font-size: 1.35rem; /* Civil, Trabalhista, etc. – larger than "Direito" */
+        font-family: var(--headerFont);
+        font-weight: 700;
+        color: #fff;
+        line-height: 1.1;
     }
     .section-areas-item .cs-text {
         color: var(--bodyTextColor);
         margin: 0;
         font-size: var(--bodyFontSize);
-        line-height: 1.5;
+        font-weight: 600;
+        line-height: 1.7;
         text-align: left;
     }
 }
