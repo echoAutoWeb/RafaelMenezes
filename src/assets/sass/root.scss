@@ -1142,16 +1142,17 @@
 		left: 0;
 		right: 0;
 		z-index: 10000;
-		background-color: transparent !important;
-		background-image: none !important;
-		box-shadow: none;
-		border: none;
+		background: transparent !important;
+		box-shadow: none !important;
+		border: none !important;
 		.cs-nav-rm-container {
+			display: flex;
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
 			text-align: center;
 			gap: 0.75rem;
+			background: transparent !important;
 		}
 		.cs-nav-rm-brand,
 		.cs-nav-rm-top {
@@ -1201,6 +1202,10 @@
 		padding: 0.75rem 1rem;
 		.cs-nav-rm-container {
 			align-items: center;
+			gap: 1.5rem;
+		}
+		.cs-nav-rm-logo .logo-rm-img {
+			max-width: 22rem; /* Aumentado em 2x */
 		}
 		.cs-nav-rm-brand {
 			position: static;
@@ -1215,27 +1220,41 @@
 			opacity: 1;
 			transform: none;
 			overflow: visible;
-			background: transparent;
-			box-shadow: none;
+			background: transparent !important;
+			box-shadow: none !important;
 			width: 100%;
 		}
 		.cs-nav-rm-ul.cs-ul {
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-			gap: 0.5rem 1rem;
-			justify-items: center;
-			max-width: 20rem;
-			margin: 0 auto;
+			display: flex;
+			flex-direction: column;
+			gap: 0.75rem;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+			margin: 0;
+			/* Reset base styles that cause "weird box/sliders" */
+			height: auto;
+			padding: 0;
+			overflow: visible;
+			background: transparent !important;
 		}
 		.cs-nav-rm-ul.cs-ul .cs-li {
 			width: 100%;
 			text-align: center;
+			opacity: 1 !important;
+			transform: none !important;
+			transition: none !important;
+			visibility: visible !important;
 		}
 		.cs-line {
 			background-color: #fff;
 		}
 		.cs-nav-rm-link.cs-li-link {
 			color: #fff;
+			opacity: 1 !important;
+			visibility: visible !important;
+			font-size: 2rem; /* Aumentado em ~2x */
+			font-weight: 700;
 		}
 	}
 }
@@ -1831,7 +1850,7 @@
 		display: inline-block;
 		margin-bottom: 0.5rem;
 		text-decoration: none;
-		color: var(--primary);
+		color: #fcca97;
 		font-size: 0.9375rem;
 		&:hover {
 			text-decoration: underline;
@@ -1841,7 +1860,7 @@
 		width: 100%;
 		max-width: 400px;
 		height: 1px;
-		background: var(--primary);
+		background: #fcca97;
 		opacity: 0.6;
 		margin: 1rem 0;
 	}
@@ -1875,26 +1894,37 @@
 /* Botão WhatsApp fixo – canto inferior direito (spec) */
 .whatsapp-floating {
 	position: fixed;
-	bottom: 1.25rem;
-	right: 1.25rem;
+	bottom: 1.5rem;
+	right: 1.5rem;
 	z-index: 9999;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	width: 3.5rem;
-	height: 3.5rem;
+	width: 4.2rem;
+	height: 4.2rem;
 	background-color: #25d366;
 	border-radius: 50%;
 	color: #fff;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-	transition: transform 0.2s, box-shadow 0.2s;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+	transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s;
+	
+	animation: pulse-whatsapp 2s infinite;
+
 	&:hover {
-		transform: scale(1.05);
-		box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+		transform: scale(1.1);
+		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+		background-color: #20ba5a;
 	}
+
 	img {
-		width: 2rem;
-		height: 2rem;
+		width: 2.5rem;
+		height: 2.5rem;
 	}
+}
+
+@keyframes pulse-whatsapp {
+	0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+	70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+	100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
 }
 
