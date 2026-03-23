@@ -1,9 +1,9 @@
 module.exports = {
     name: "Rafael Menezes",
     email: "contato@rafaelmenezes.adv.br",
-    phoneForTel: "5130639659",
-    phoneFormatted: "(51) 3063-9659",
-    phonePoa2: "(51) 98532-2028",
+    phoneForTel: "5130839639",
+    phoneFormatted: "(51) 3083-9639",
+    phonePoa2: "(51) 98332-2028",
     phoneRj: "(21) 2042-0051",
     address: {
         lineOne: "Praça XV de Novembro, 21/302",
@@ -23,9 +23,9 @@ module.exports = {
         facebook: "https://www.facebook.com/p/Rafael-Menezes-Advocacia-100064244946139/",
         linkedin: "https://br.linkedin.com/company/rafael-menezes-advocacia-e-consultoria",
     },
-    whatsapp: "5551985322028",
+    whatsapp: "5551983322028",
     offices: [
-        { name: "Porto Alegre / RS", city: "Porto Alegre", phones: ["(51) 3063-9659", "(51) 98532-2028"], tipo: "Matriz" },
+        { name: "Porto Alegre / RS", city: "Porto Alegre", phones: ["(51) 3083-9639", "(51) 98332-2028"], tipo: "Matriz" },
         { name: "Rio de Janeiro / RJ", city: "Rio de Janeiro", phones: ["(21) 2042-0051"], tipo: "Filial" },
     ],
     domain: "https://www.rafaelmenezes.adv.br",
