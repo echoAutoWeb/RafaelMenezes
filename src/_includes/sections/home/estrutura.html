@@ -9,34 +9,112 @@
         <h2 class="cs-title section-estrutura-title">Conheça nossa estrutura</h2>
         <div class="section-estrutura-inner">
             <div class="section-estrutura-images">
-                <figure class="section-estrutura-figure">
+                <figure class="section-estrutura-figure" id="fig-sm">
                     <div class="section-estrutura-img-wrap">
-                        <img src="/assets/images/pic1.webp" alt="Escritório Santa Maria - Visão 1" loading="lazy" decoding="async">
+                        <img class="city-img img-active" src="/assets/images/SM/pic1.webp" alt="Escritório Santa Maria - Visão 1" loading="lazy" decoding="async">
+                        <img class="city-img" src="/assets/images/SM/pic2.webp" alt="Escritório Santa Maria - Visão 2" loading="lazy" decoding="async">
                     </div>
-                    <div class="section-estrutura-dots" aria-hidden="true" style="display:none;">
-                        <span class="section-estrutura-dot"></span>
+                    <div class="section-estrutura-dots" aria-hidden="true">
+                        <span class="section-estrutura-dot dot-active" onclick="changeCitySlide('fig-sm', 0)"></span>
+                        <span class="section-estrutura-dot" onclick="changeCitySlide('fig-sm', 1)"></span>
                     </div>
                     <figcaption>Santa Maria / RS</figcaption>
                 </figure>
-                <figure class="section-estrutura-figure">
+                
+                <figure class="section-estrutura-figure" id="fig-poa">
                     <div class="section-estrutura-img-wrap">
-                        <img src="/assets/images/C%C3%B3pia%20de%20IMG_1391.jpg" alt="Escritório Porto Alegre" loading="lazy" decoding="async">
+                        <img class="city-img img-active" src="/assets/images/POA/C%C3%B3pia%20de%20IMG_1391.jpg" alt="Escritório Porto Alegre - Visão 1" loading="lazy" decoding="async">
+                        <img class="city-img" src="/assets/images/POA/WhatsApp%20Image%202026-03-24%20at%2019.03.47.jpeg" alt="Escritório Porto Alegre - Visão 2" loading="lazy" decoding="async">
                     </div>
-                    <div class="section-estrutura-dots" aria-hidden="true" style="display:none;">
-                        <span class="section-estrutura-dot"></span>
+                    <div class="section-estrutura-dots" aria-hidden="true">
+                        <span class="section-estrutura-dot dot-active" onclick="changeCitySlide('fig-poa', 0)"></span>
+                        <span class="section-estrutura-dot" onclick="changeCitySlide('fig-poa', 1)"></span>
                     </div>
                     <figcaption>Porto Alegre / RS</figcaption>
                 </figure>
-                <figure class="section-estrutura-figure">
+
+                <figure class="section-estrutura-figure" id="fig-rio">
                     <div class="section-estrutura-img-wrap">
-                        <img src="/assets/images/rj-2.webp" alt="Escritório Rio de Janeiro" loading="lazy" decoding="async">
+                        <img class="city-img img-active" src="/assets/images/RIO/rj-2.webp" alt="Escritório Rio de Janeiro - Visão 1" loading="lazy" decoding="async">
+                        <img class="city-img" src="/assets/images/RIO/rj-3.webp" alt="Escritório Rio de Janeiro - Visão 2" loading="lazy" decoding="async">
                     </div>
-                    <div class="section-estrutura-dots" aria-hidden="true" style="display:none;">
-                        <span class="section-estrutura-dot"></span>
+                    <div class="section-estrutura-dots" aria-hidden="true">
+                        <span class="section-estrutura-dot dot-active" onclick="changeCitySlide('fig-rio', 0)"></span>
+                        <span class="section-estrutura-dot" onclick="changeCitySlide('fig-rio', 1)"></span>
                     </div>
                     <figcaption>Rio de Janeiro / RJ</figcaption>
                 </figure>
             </div>
+
+<style>
+.section-estrutura-img-wrap {
+    position: relative;
+    width: 100%;
+    /* Keep aspect ratio but allow stacking */
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: var(--border-radius, 8px);
+}
+.city-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 1;
+}
+.city-img.img-active {
+    opacity: 1;
+    z-index: 2;
+}
+.section-estrutura-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+}
+.section-estrutura-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.section-estrutura-dot.dot-active {
+    background-color: var(--primary, #1e3a8a);
+}
+</style>
+
+<script>
+function changeCitySlide(figId, index) {
+    const figure = document.getElementById(figId);
+    if (!figure) return;
+    
+    // Update images
+    const images = figure.querySelectorAll('.city-img');
+    images.forEach((img, i) => {
+        if (i === index) {
+            img.classList.add('img-active');
+        } else {
+            img.classList.remove('img-active');
+        }
+    });
+
+    // Update dots
+    const dots = figure.querySelectorAll('.section-estrutura-dot');
+    dots.forEach((dot, i) => {
+        if (i === index) {
+            dot.classList.add('dot-active');
+        } else {
+            dot.classList.remove('dot-active');
+        }
+    });
+}
+</script>
             <div class="section-estrutura-info">
                 <h3 class="section-estrutura-subtitle">Atendimento Presencial</h3>
                 <p class="cs-text">Porto Alegre</p>
