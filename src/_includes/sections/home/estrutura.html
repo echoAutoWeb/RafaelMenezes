@@ -9,20 +9,8 @@
         <h2 class="cs-title section-estrutura-title">Conheça nossa estrutura</h2>
         <div class="section-estrutura-inner">
             <div class="section-estrutura-images">
-                <figure class="section-estrutura-figure" id="fig-sm">
-                    <div class="section-estrutura-img-wrap">
-                        <img class="city-img img-active" src="/assets/images/SM/pic1.webp" alt="Escritório Santa Maria - Visão 1" loading="lazy" decoding="async">
-                        <img class="city-img" src="/assets/images/SM/pic2.webp" alt="Escritório Santa Maria - Visão 2" loading="lazy" decoding="async">
-                    </div>
-                    <div class="section-estrutura-dots" aria-hidden="true">
-                        <span class="section-estrutura-dot dot-active" onclick="changeCitySlide('fig-sm', 0)"></span>
-                        <span class="section-estrutura-dot" onclick="changeCitySlide('fig-sm', 1)"></span>
-                    </div>
-                    <figcaption>Santa Maria / RS</figcaption>
-                </figure>
-                
                 <figure class="section-estrutura-figure" id="fig-poa">
-                    <div class="section-estrutura-img-wrap">
+                    <div class="section-estrutura-img-wrap" onclick="toggleCitySlide('fig-poa')">
                         <img class="city-img img-active" src="/assets/images/POA/C%C3%B3pia%20de%20IMG_1391.jpg" alt="Escritório Porto Alegre - Visão 1" loading="lazy" decoding="async">
                         <img class="city-img" src="/assets/images/POA/WhatsApp%20Image%202026-03-24%20at%2019.03.47.jpeg" alt="Escritório Porto Alegre - Visão 2" loading="lazy" decoding="async">
                     </div>
@@ -33,8 +21,20 @@
                     <figcaption>Porto Alegre / RS</figcaption>
                 </figure>
 
+                <figure class="section-estrutura-figure" id="fig-sm">
+                    <div class="section-estrutura-img-wrap" onclick="toggleCitySlide('fig-sm')">
+                        <img class="city-img img-active" src="/assets/images/SM/pic1.webp" alt="Escritório Santa Maria - Visão 1" loading="lazy" decoding="async">
+                        <img class="city-img" src="/assets/images/SM/pic2.webp" alt="Escritório Santa Maria - Visão 2" loading="lazy" decoding="async">
+                    </div>
+                    <div class="section-estrutura-dots" aria-hidden="true">
+                        <span class="section-estrutura-dot dot-active" onclick="changeCitySlide('fig-sm', 0)"></span>
+                        <span class="section-estrutura-dot" onclick="changeCitySlide('fig-sm', 1)"></span>
+                    </div>
+                    <figcaption>Santa Maria / RS</figcaption>
+                </figure>
+
                 <figure class="section-estrutura-figure" id="fig-rio">
-                    <div class="section-estrutura-img-wrap">
+                    <div class="section-estrutura-img-wrap" onclick="toggleCitySlide('fig-rio')">
                         <img class="city-img img-active" src="/assets/images/RIO/rj-2.webp" alt="Escritório Rio de Janeiro - Visão 1" loading="lazy" decoding="async">
                         <img class="city-img" src="/assets/images/RIO/rj-3.webp" alt="Escritório Rio de Janeiro - Visão 2" loading="lazy" decoding="async">
                     </div>
@@ -54,6 +54,7 @@
     aspect-ratio: 16 / 9;
     overflow: hidden;
     border-radius: var(--border-radius, 8px);
+    cursor: pointer;
 }
 .city-img {
     position: absolute;
@@ -113,6 +114,21 @@ function changeCitySlide(figId, index) {
             dot.classList.remove('dot-active');
         }
     });
+}
+
+// Toggle slide on click/tap: advances to next image in the figure
+function toggleCitySlide(figId) {
+    const figure = document.getElementById(figId);
+    if (!figure) return;
+    const images = figure.querySelectorAll('.city-img');
+    if (!images.length) return;
+    // find current active index
+    let current = 0;
+    images.forEach((img, i) => {
+        if (img.classList.contains('img-active')) current = i;
+    });
+    const next = (current + 1) % images.length;
+    changeCitySlide(figId, next);
 }
 </script>
             <div class="section-estrutura-info">
