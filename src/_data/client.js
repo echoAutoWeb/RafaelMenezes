@@ -23,7 +23,7 @@ module.exports = {
         facebook: "https://www.facebook.com/p/Rafael-Menezes-Advocacia-100064244946139/",
         linkedin: "https://br.linkedin.com/company/rafael-menezes-advocacia-e-consultoria",
     },
-    whatsapp: "5551983322028",
+    whatsapp: "555130839639",
     offices: [
         { name: "Porto Alegre / RS", city: "Porto Alegre", phones: ["(51) 3083-9639", "(51) 98332-2028"], tipo: "Matriz" },
         { name: "Rio de Janeiro / RJ", city: "Rio de Janeiro", phones: ["(21) 2042-0051"], tipo: "Filial" },
