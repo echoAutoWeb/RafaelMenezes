@@ -200,6 +200,7 @@
 
 			// Header RM: no mobile mostra grade 2x2, menu sempre visível e clicável
 			if (elements.navigation?.classList.contains("cs-nav-rm")) {
+				elements.menuWrapper.removeAttribute("inert");
 				elements.menuWrapper.inert = false;
 				return;
 			}
@@ -224,6 +225,36 @@
 			elements.navigation.addEventListener("click", (e) => {
 				if (e.target === elements.navigation && elements.navigation.classList.contains(CONFIG.CLASSES.active)) {
 					menuManager.toggle();
+				}
+			});
+
+			// Smooth scroll for header anchor links (same-page)
+			elements.navigation.addEventListener("click", (e) => {
+				const anchor = e.target.closest('a');
+				if (!anchor) return;
+				const href = anchor.getAttribute('href');
+				if (!href || href.indexOf('#') === -1) return;
+
+				try {
+					const url = new URL(anchor.href, window.location.origin);
+					// Only handle links that point to the current page
+					if (url.pathname !== window.location.pathname) return;
+					const targetId = url.hash.replace('#', '');
+					if (!targetId) return;
+					const targetEl = document.getElementById(targetId);
+					if (!targetEl) return;
+
+					e.preventDefault();
+					// If mobile menu is open, close it before scrolling
+					if (isMobile() && elements.navigation.classList.contains(CONFIG.CLASSES.active)) {
+						menuManager.toggle();
+					}
+
+					// Smooth scroll and update hash without jump
+					targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+					history.replaceState(null, '', '#' + targetId);
+				} catch (err) {
+					// ignore malformed URLs
 				}
 			});
 
