@@ -27,15 +27,6 @@
         cursor: pointer;
     }
 
-    /* Accordion behavior: descriptions collapsed by default on mobile */
-    .section-areas-item .cs-text {
-        display: none;
-    }
-
-    .section-areas-item.is-open .cs-text {
-        display: block;
-    }
-
     .section-areas-item-title {
         font-size: 0.85rem; /* "Direito" menor */
         line-height: 1.1;
@@ -51,9 +42,11 @@
         align-items: center !important;
         text-align: center !important;
     }
-    .section-areas-item-title,
-    .section-areas-item .cs-text {
+    .section-areas-item-title {
         text-align: center !important;
+    }
+    .section-areas-item .cs-text {
+        text-align: justify !important;
     }
 
     .section-estrutura .section-estrutura-images {
@@ -271,14 +264,56 @@
         font-weight: 600;
         line-height: 1.7;
         text-align: left;
+        
+        /* Drawer / Accordion behavior */
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease;
+    }
+    .section-areas-item.is-open .cs-text {
+        max-height: 1000px;
+        opacity: 1;
+        margin-top: 1rem;
     }
 }
 @media (min-width: 48rem) {
+    .section-areas .section-areas-title {
+        max-width: 75rem;
+    }
+    .section-areas .section-areas-list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        max-width: 75rem;
+    }
     .section-areas .section-areas-item {
-        grid-template-columns: 12rem 1fr;
-        gap: 2rem;
-        align-items: start;
-        justify-items: start;
+        display: contents; /* Strip physical box so children join the parent grid */
+    }
+    .section-areas .section-areas-item-title-wrap {
+        grid-row: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 1.5rem 1rem;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+        /* Cursor pointer is already set via nav.js, and hover is set below */
+    }
+    .section-areas .section-areas-item-title-wrap:hover,
+    .section-areas .section-areas-item.is-open .section-areas-item-title-wrap {
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+    .section-areas .section-areas-item-title,
+    .section-areas .section-areas-item-subtitle {
+        text-align: center;
+    }
+    .section-areas .section-areas-item .cs-text {
+        grid-row: 2;
+        grid-column: 1 / -1; /* Span all 4 columns */
+        text-align: justify;
+        padding: 0 2rem; /* Give text breathing room horizontally */
     }
 }
 
