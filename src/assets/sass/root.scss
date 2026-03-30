@@ -1206,6 +1206,7 @@
 @media only screen and (max-width: 1023.5px) {
 	#cs-navigation.cs-nav-rm {
 		padding: 0.75rem 1rem;
+		position: absolute; /* Instead of fixed from base #cs-navigation */
 		.cs-nav-rm-container {
 			align-items: center;
 			gap: 1.5rem;
@@ -1229,6 +1230,8 @@
 			background: transparent !important;
 			box-shadow: none !important;
 			width: 100%;
+			z-index: 10;
+			pointer-events: auto;
 		}
 		.cs-nav-rm-ul.cs-ul {
 			display: flex;

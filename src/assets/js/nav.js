@@ -323,8 +323,24 @@
 	document.addEventListener("click", (event) => {
 		const trigger = event.target.closest("[data-open-form-modal]");
 		if (trigger) {
+			console.log("nav.js: data-open-form-modal trigger", { trigger, target: event.target });
 			event.preventDefault();
 			openModal();
+		}
+	});
+
+	// Also listen for touch/pointer events on mobile devices where click may
+	// be delayed or not fired in the same way.
+	document.addEventListener("touchstart", (event) => {
+		const trigger = event.target.closest("[data-open-form-modal]");
+		if (trigger) {
+			console.log("nav.js: touchstart form trigger", { trigger, target: event.target });
+		}
+	});
+	document.addEventListener("pointerdown", (event) => {
+		const trigger = event.target.closest("[data-open-form-modal]");
+		if (trigger) {
+			console.log("nav.js: pointerdown form trigger", { trigger, target: event.target });
 		}
 	});
 
@@ -371,8 +387,23 @@
 	document.addEventListener("click", (event) => {
 		const trigger = event.target.closest("[data-open-contact-modal]");
 		if (trigger) {
+			console.log("nav.js: data-open-contact-modal trigger", { trigger, target: event.target });
 			event.preventDefault();
 			openModal();
+		}
+	});
+
+	// Touch/pointer variants for contact modal trigger
+	document.addEventListener("touchstart", (event) => {
+		const trigger = event.target.closest("[data-open-contact-modal]");
+		if (trigger) {
+			console.log("nav.js: touchstart contact trigger", { trigger, target: event.target });
+		}
+	});
+	document.addEventListener("pointerdown", (event) => {
+		const trigger = event.target.closest("[data-open-contact-modal]");
+		if (trigger) {
+			console.log("nav.js: pointerdown contact trigger", { trigger, target: event.target });
 		}
 	});
 
