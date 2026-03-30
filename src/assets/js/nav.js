@@ -235,6 +235,16 @@
 				const href = anchor.getAttribute('href');
 				if (!href || href.indexOf('#') === -1) return;
 
+				// If the anchor is intended to open a modal or trigger a special action
+				// (e.g. `data-open-form-modal` / `data-open-contact-modal`), don't
+				// intercept it here — let the document-level handlers process it.
+				if (
+					anchor.matches('[data-open-form-modal], [data-open-contact-modal]') ||
+					anchor.closest('[data-open-form-modal], [data-open-contact-modal]')
+				) {
+					return;
+				}
+
 				try {
 					const url = new URL(anchor.href, window.location.origin);
 					// Only handle links that point to the current page
